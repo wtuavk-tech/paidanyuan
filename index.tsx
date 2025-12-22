@@ -34,7 +34,8 @@ import {
   Ban,
   Users,
   Clock,
-  MapPin
+  MapPin,
+  Megaphone
 } from 'lucide-react';
 
 // --- 类型定义 ---
@@ -179,23 +180,31 @@ const BlockStat = ({ label, value, color = "text-slate-700", highlight = false, 
 
 const NotificationBar = () => {
   return (
-    <div className="flex items-center gap-4 mb-2 px-4 py-1.5 bg-gradient-to-r from-orange-50 via-amber-50 to-orange-50 border border-orange-100 rounded-lg shadow-sm overflow-hidden relative group/marquee shrink-0">
-      <div className="flex items-center gap-2 text-orange-600 shrink-0 z-10 bg-inherit pr-2">
-        <div className="relative">
-          <Bell size={16} className="animate-[wiggle_1s_ease-in-out_infinite]" />
-          <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-red-500 rounded-full border-2 border-orange-50"></div>
-        </div>
-        <span className="text-xs font-bold whitespace-nowrap">系统公告</span>
+    <div className="flex items-center gap-3 mb-2 px-2 py-1.5 bg-[#0f172a] rounded-lg shadow-sm overflow-hidden relative group/marquee shrink-0 h-[46px] border border-slate-800">
+      <div className="flex items-center justify-center gap-1.5 bg-[#ef4444] text-white px-3 h-[28px] rounded shrink-0 z-10 shadow-sm ml-1">
+        <span className="text-[12px] font-bold whitespace-nowrap leading-none tracking-wide">主要公告</span>
+        <Bell size={13} className="fill-white/20 stroke-[2.5]" />
       </div>
-      <div className="flex-1 overflow-hidden relative h-5 flex items-center">
-        <div className="whitespace-nowrap animate-[marquee_25s_linear_infinite] group-hover/marquee:[animation-play-state:paused] flex items-center gap-8 text-xs font-medium text-slate-700 cursor-default">
-          <span>🔥 <span className="font-bold text-orange-600">紧急通知：</span>系统将于今晚 02:00 进行例行维护，预计耗时 15 分钟，请提前保存数据。</span>
-          <span>🏆 <span className="font-bold text-blue-600">喜报：</span>恭喜上海浦东区张师傅获得本月“服务之星”称号，奖励现金 500 元！</span>
-          <span>📢 <span className="font-bold text-emerald-600">新功能上线：</span>“一键快找”功能已优化，支持按地域和项目模糊搜索，欢迎体验。</span>
+      <div className="flex-1 overflow-hidden relative h-full flex items-center">
+        <div className="whitespace-nowrap animate-[marquee_35s_linear_infinite] group-hover/marquee:[animation-play-state:paused] flex items-center gap-16 text-[12px] font-medium text-slate-200 cursor-default">
+          <span className="flex items-center gap-2">
+            <Megaphone size={14} className="text-[#ef4444]" />
+            <span>关于 2025 年度秋季职级晋升评审的通知：点击下方详情以阅读完整公告内容。请所有相关人员务必在截止日期前完成确认。</span>
+          </span>
+          <span className="flex items-center gap-2">
+             <Megaphone size={14} className="text-[#ef4444]" />
+             <span>📢 系统升级通知：今晚 24:00 将进行系统维护，预计耗时 30 分钟。</span>
+          </span>
+          <span className="flex items-center gap-2">
+             <Megaphone size={14} className="text-[#ef4444]" />
+             <span>🔥 10月业绩pk赛圆满结束，恭喜华东大区获得冠军！</span>
+          </span>
         </div>
+      </div>
+      <div className="shrink-0 z-10 bg-[#1e293b] border border-slate-700/50 text-[#60a5fa] text-[11px] font-bold font-mono px-2.5 py-1 rounded select-none mr-1">
+        2025-11-19
       </div>
       <style>{`
-        @keyframes wiggle { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
         @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
       `}</style>
     </div>
