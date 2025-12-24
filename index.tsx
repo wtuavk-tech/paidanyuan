@@ -653,11 +653,11 @@ const App = () => {
                 <th style={{width: '4%'}} className="px-1 py-2 text-center">操作</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="">
               {currentData.map((order, index) => { 
                 const isFirstRow = index === 0;
                 return (
-                  <tr key={order.id} className={`bg-white even:bg-gray-100 hover:!bg-blue-100 transition-colors text-[10px] border-b border-gray-200 last:border-0 align-middle ${isFirstRow ? 'h-16' : 'h-12'}`}>
+                  <tr key={order.id} className={`bg-white even:bg-blue-50 hover:!bg-blue-100 transition-colors text-[10px] border-b border-[#cbd5e1] align-middle ${isFirstRow ? 'h-16' : 'h-12'}`}>
                       <td className={`px-1 py-1 font-bold text-slate-800 text-center text-[12px] ${isFirstRow?'pt-5':''}`}>{order.mobile}</td>
                       <td className={`px-1 py-1 truncate ${isFirstRow?'pt-5':''}`}><ServiceItemCell item={order.serviceItem} warranty={order.warranty} /></td>
                       <td className={`px-1 py-1 text-center ${isFirstRow?'pt-5':''}`}><StatusCell order={order} /></td>
