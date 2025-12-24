@@ -241,11 +241,11 @@ const SearchPanel = () => {
                         <span className="text-base font-bold text-slate-800">数据概览</span>
                     </div>
                     <div className="flex items-center flex-1 justify-between gap-4 overflow-hidden h-full">
-                        <div className="flex items-baseline gap-1.5"><span className="text-xs font-bold text-slate-500">录单:</span><span className="text-lg font-extrabold text-slate-800">{stats.record.total}</span></div>
-                        <div className="flex items-baseline gap-1.5"><span className="text-xs font-bold text-slate-500">今日派单:</span><span className="text-lg font-extrabold text-slate-800">{stats.dispatch.today}</span></div>
-                        <div className="flex items-baseline gap-1.5"><span className="text-xs font-bold text-slate-500">今日业绩:</span><span className="text-lg font-extrabold text-emerald-600">{stats.perf.today}</span></div>
-                        <div className="flex items-baseline gap-1.5"><span className="text-xs font-bold text-slate-500">收款率:</span><span className="text-lg font-extrabold text-slate-800">{stats.perf.rate}</span></div>
-                        <div className="flex items-baseline gap-1.5"><span className="text-xs font-bold text-slate-500">退款:</span><span className="text-lg font-extrabold text-red-500">{stats.record.refund}</span></div>
+                        <div className="flex items-baseline gap-1.5"><span className="text-xs font-bold text-slate-500">录单:</span><span className="text-lg font-extrabold text-slate-800 font-mono">{stats.record.total}</span></div>
+                        <div className="flex items-baseline gap-1.5"><span className="text-xs font-bold text-slate-500">今日派单:</span><span className="text-lg font-extrabold text-slate-800 font-mono">{stats.dispatch.today}</span></div>
+                        <div className="flex items-baseline gap-1.5"><span className="text-xs font-bold text-slate-500">今日业绩:</span><span className="text-lg font-extrabold text-emerald-600 font-mono">{stats.perf.today}</span></div>
+                        <div className="flex items-baseline gap-1.5"><span className="text-xs font-bold text-slate-500">收款率:</span><span className="text-lg font-extrabold text-slate-800 font-mono">{stats.perf.rate}</span></div>
+                        <div className="flex items-baseline gap-1.5"><span className="text-xs font-bold text-slate-500">退款:</span><span className="text-lg font-extrabold text-red-500 font-mono">{stats.record.refund}</span></div>
                     </div>
                  </div>
              ) : (
@@ -580,8 +580,8 @@ const CompleteOrderModal = ({ isOpen, onClose, order }: { isOpen: boolean; onClo
        <div className="bg-white w-[500px] rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
           <div className="bg-gradient-to-r from-green-500 to-emerald-600 p-6 text-white"><h3 className="text-xl font-bold">完成订单</h3></div>
           <div className="p-6 space-y-4">
-             <div className="flex justify-between text-sm"><span className="text-slate-500">应收金额</span><span className="font-bold text-lg text-emerald-600">¥{order.totalAmount}</span></div>
-             <input type="number" defaultValue={order.totalAmount} className="w-full border border-slate-300 rounded-lg p-2" />
+             <div className="flex justify-between text-sm"><span className="text-slate-500">应收金额</span><span className="font-bold text-lg text-emerald-600 font-mono">¥{order.totalAmount}</span></div>
+             <input type="number" defaultValue={order.totalAmount} className="w-full border border-slate-300 rounded-lg p-2 font-mono" />
           </div>
           <div className="p-6 border-t bg-slate-50 flex justify-end gap-3">
              <button onClick={onClose} className="px-4 py-2 text-slate-600">取消</button>
@@ -658,13 +658,13 @@ const App = () => {
                 const isFirstRow = index === 0;
                 return (
                   <tr key={order.id} className={`bg-white even:bg-blue-50 hover:!bg-blue-100 transition-colors text-[10px] border-b border-[#cbd5e1] align-middle ${isFirstRow ? 'h-16' : 'h-12'}`}>
-                      <td className={`px-1 py-1 font-bold text-slate-800 text-center text-[12px] ${isFirstRow?'pt-5':''}`}>{order.mobile}</td>
+                      <td className={`px-1 py-1 font-bold text-slate-800 text-center text-[12px] font-mono ${isFirstRow?'pt-5':''}`}>{order.mobile}</td>
                       <td className={`px-1 py-1 truncate ${isFirstRow?'pt-5':''}`}><ServiceItemCell item={order.serviceItem} warranty={order.warranty} /></td>
                       <td className={`px-1 py-1 text-center ${isFirstRow?'pt-5':''}`}><StatusCell order={order} /></td>
                       <td className={`px-1 py-1 text-center font-mono text-black font-medium text-[12px] ${isFirstRow?'pt-5':''}`}>{order.weightedCoefficient.toFixed(1)}</td>
                       <td className={`px-1 py-1 truncate ${isFirstRow?'pt-5':''}`}>
                           <div className="truncate" title={order.region}>{order.region}</div>
-                          <div className="text-[9px] text-blue-500">{order.regionPeople}人</div>
+                          <div className="text-[9px] text-blue-500"><span className="font-mono">{order.regionPeople}</span>人</div>
                       </td>
                       <td className={`px-1 py-1 text-gray-700 ${isFirstRow?'pt-5':''}`}>
                           <div className="line-clamp-2 leading-tight" title={order.address}>{order.address}</div>
@@ -672,12 +672,12 @@ const App = () => {
                       <td className={`px-1 py-1 ${isFirstRow?'pt-5':''}`}>
                           <div className="line-clamp-2 text-slate-600 leading-tight" title={order.details}>{order.details}</div>
                       </td>
-                      <td className={`px-1 py-1 text-center font-bold text-yellow-600 text-[12px] ${isFirstRow?'pt-5':''}`}>{order.serviceRatio}</td>
+                      <td className={`px-1 py-1 text-center font-bold text-yellow-600 text-[12px] font-mono ${isFirstRow?'pt-5':''}`}>{order.serviceRatio}</td>
                       <td className={`px-1 py-1 text-center ${isFirstRow?'pt-5':''}`}>
                           <span className={`px-1 rounded text-[12px] ${order.dispatchMethod === DispatchMethod.Grab ? 'bg-indigo-50 text-indigo-600' : 'bg-pink-50 text-pink-600'}`}>{order.dispatchMethod}</span>
                       </td>
-                      <td className={`px-1 py-1 text-center font-bold text-slate-800 text-[12px] ${isFirstRow?'pt-5':''}`}>{order.marketPrice}</td>
-                      <td className={`px-1 py-1 text-center text-black text-[12px] ${isFirstRow?'pt-5':''}`}>{order.historyPriceLow}-{order.historyPriceHigh}</td>
+                      <td className={`px-1 py-1 text-center font-bold text-slate-800 text-[12px] font-mono ${isFirstRow?'pt-5':''}`}>{order.marketPrice}</td>
+                      <td className={`px-1 py-1 text-center text-black text-[12px] font-mono ${isFirstRow?'pt-5':''}`}>{order.historyPriceLow}-{order.historyPriceHigh}</td>
                       <td className={`px-1 py-1 text-center ${isFirstRow?'pt-5':''}`}><span className="px-1 bg-gray-100 rounded text-slate-500 text-[12px]">{order.source}</span></td>
                       <td className={`px-1 py-1 ${isFirstRow?'pt-5':''}`}>
                           <OrderNoCell orderNo={order.orderNo} hasAdvancePayment={order.hasAdvancePayment} depositAmount={order.depositAmount} />
@@ -685,12 +685,12 @@ const App = () => {
                       </td>
                       <td className={`px-1 py-1 ${isFirstRow?'pt-5':''}`}>
                           <div className="flex flex-col gap-1">
-                              <div className="text-[10px] text-slate-400 flex items-center gap-1">
-                                  <span className="w-4 h-4 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] scale-90">录</span>
+                              <div className="text-[10px] text-slate-400 flex items-center gap-1 font-mono">
+                                  <span className="w-4 h-4 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] scale-90 font-sans">录</span>
                                   {order.recordTime}
                               </div>
-                              <div className="text-[10px] text-blue-600 font-medium flex items-center gap-1">
-                                  <span className="w-4 h-4 rounded-full bg-purple-500 text-white flex items-center justify-center text-[10px] scale-90">期</span>
+                              <div className="text-[10px] text-blue-600 font-medium flex items-center gap-1 font-mono">
+                                  <span className="w-4 h-4 rounded-full bg-purple-500 text-white flex items-center justify-center text-[10px] scale-90 font-sans">期</span>
                                   {order.expectedTime}
                               </div>
                           </div>
@@ -708,7 +708,7 @@ const App = () => {
           </table>
         </div>
         <div className="bg-white px-4 py-3 border-t border-gray-200 flex justify-center items-center text-xs text-slate-600 gap-4 shrink-0 select-none shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-20">
-            <span>共 {totalItems} 条</span>
+            <span>共 <span className="font-mono">{totalItems}</span> 条</span>
             <div className="relative">
                 <select 
                     value={pageSize}
@@ -742,7 +742,7 @@ const App = () => {
                         <button
                             key={p}
                             onClick={() => setCurrentPage(p)}
-                            className={`w-7 h-7 flex items-center justify-center border rounded text-xs font-medium transition-colors ${
+                            className={`w-7 h-7 flex items-center justify-center border rounded text-xs font-medium transition-colors font-mono ${
                                 currentPage === p 
                                     ? 'bg-blue-600 text-white border-blue-600' 
                                     : 'bg-white border-gray-300 hover:border-blue-400 hover:text-blue-600'
@@ -779,7 +779,7 @@ const App = () => {
                         const val = parseInt((e.target as HTMLInputElement).value);
                         if (!isNaN(val) && val >= 1 && val <= totalPages) setCurrentPage(val);
                     }}
-                    className="w-12 h-7 border border-gray-300 rounded text-center text-xs focus:outline-none focus:border-blue-500"
+                    className="w-12 h-7 border border-gray-300 rounded text-center text-xs focus:outline-none focus:border-blue-500 font-mono"
                 />
                 <span>页</span>
             </div>
