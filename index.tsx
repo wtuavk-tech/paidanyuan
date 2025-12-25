@@ -658,26 +658,26 @@ const App = () => {
                 const isFirstRow = index === 0;
                 return (
                   <tr key={order.id} className={`bg-white even:bg-blue-50 hover:!bg-blue-100 transition-colors text-[10px] border-b border-[#cbd5e1] align-middle ${isFirstRow ? 'h-16' : 'h-12'}`}>
-                      <td className={`px-1 py-1 font-bold text-slate-800 text-center text-[12px] font-mono ${isFirstRow?'pt-5':''}`}>{order.mobile}</td>
+                      <td className={`px-1 py-1 font-bold text-slate-800 text-center text-[14.5px] font-mono ${isFirstRow?'pt-5':''}`}>{order.mobile}</td>
                       <td className={`px-1 py-1 truncate ${isFirstRow?'pt-5':''}`}><ServiceItemCell item={order.serviceItem} warranty={order.warranty} /></td>
                       <td className={`px-1 py-1 text-center ${isFirstRow?'pt-5':''}`}><StatusCell order={order} /></td>
-                      <td className={`px-1 py-1 text-center font-mono text-black font-medium text-[12px] ${isFirstRow?'pt-5':''}`}>{order.weightedCoefficient.toFixed(1)}</td>
+                      <td className={`px-1 py-1 text-center font-mono text-black font-medium text-[14.5px] ${isFirstRow?'pt-5':''}`}>{order.weightedCoefficient.toFixed(1)}</td>
                       <td className={`px-1 py-1 truncate ${isFirstRow?'pt-5':''}`}>
-                          <div className="truncate" title={order.region}>{order.region}</div>
-                          <div className="text-[9px] text-blue-500"><span className="font-mono">{order.regionPeople}</span>人</div>
+                          <div className="truncate text-[12px]" title={order.region}>{order.region}</div>
+                          <div className="text-[11px] text-blue-500"><span className="font-mono">{order.regionPeople}</span>人</div>
                       </td>
                       <td className={`px-1 py-1 text-gray-700 ${isFirstRow?'pt-5':''}`}>
-                          <div className="line-clamp-2 leading-tight" title={order.address}>{order.address}</div>
+                          <div className="line-clamp-2 leading-tight text-[12px]" title={order.address}>{order.address}</div>
                       </td>
                       <td className={`px-1 py-1 ${isFirstRow?'pt-5':''}`}>
-                          <div className="line-clamp-2 text-slate-600 leading-tight" title={order.details}>{order.details}</div>
+                          <div className="line-clamp-2 text-slate-600 leading-tight text-[12px]" title={order.details}>{order.details}</div>
                       </td>
-                      <td className={`px-1 py-1 text-center font-bold text-yellow-600 text-[12px] font-mono ${isFirstRow?'pt-5':''}`}>{order.serviceRatio}</td>
+                      <td className={`px-1 py-1 text-center font-bold text-yellow-600 text-[14.5px] font-mono ${isFirstRow?'pt-5':''}`}>{order.serviceRatio}</td>
                       <td className={`px-1 py-1 text-center ${isFirstRow?'pt-5':''}`}>
-                          <span className={`px-1 rounded text-[12px] ${order.dispatchMethod === DispatchMethod.Grab ? 'bg-indigo-50 text-indigo-600' : 'bg-pink-50 text-pink-600'}`}>{order.dispatchMethod}</span>
+                          <span className={`px-1 rounded text-[14.5px] ${order.dispatchMethod === DispatchMethod.Grab ? 'bg-indigo-50 text-indigo-600' : 'bg-pink-50 text-pink-600'}`}>{order.dispatchMethod}</span>
                       </td>
-                      <td className={`px-1 py-1 text-center font-bold text-slate-800 text-[12px] font-mono ${isFirstRow?'pt-5':''}`}>{order.marketPrice}</td>
-                      <td className={`px-1 py-1 text-center text-black text-[12px] font-mono ${isFirstRow?'pt-5':''}`}>{order.historyPriceLow}-{order.historyPriceHigh}</td>
+                      <td className={`px-1 py-1 text-center font-bold text-slate-800 text-[14.5px] font-mono ${isFirstRow?'pt-5':''}`}>{order.marketPrice}</td>
+                      <td className={`px-1 py-1 text-center text-black text-[14.5px] font-mono ${isFirstRow?'pt-5':''}`}>{order.historyPriceLow}-{order.historyPriceHigh}</td>
                       <td className={`px-1 py-1 text-center ${isFirstRow?'pt-5':''}`}><span className="px-1 bg-gray-100 rounded text-slate-500 text-[12px]">{order.source}</span></td>
                       <td className={`px-1 py-1 ${isFirstRow?'pt-5':''}`}>
                           <OrderNoCell orderNo={order.orderNo} hasAdvancePayment={order.hasAdvancePayment} depositAmount={order.depositAmount} />
@@ -685,11 +685,11 @@ const App = () => {
                       </td>
                       <td className={`px-1 py-1 ${isFirstRow?'pt-5':''}`}>
                           <div className="flex flex-col gap-1">
-                              <div className="text-[10px] text-slate-400 flex items-center gap-1 font-mono">
+                              <div className="text-[12px] text-slate-400 flex items-center gap-1 font-mono">
                                   <span className="w-4 h-4 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] scale-90 font-sans">录</span>
                                   {order.recordTime}
                               </div>
-                              <div className="text-[10px] text-blue-600 font-medium flex items-center gap-1 font-mono">
+                              <div className="text-[12px] text-blue-600 font-medium flex items-center gap-1 font-mono">
                                   <span className="w-4 h-4 rounded-full bg-purple-500 text-white flex items-center justify-center text-[10px] scale-90 font-sans">期</span>
                                   {order.expectedTime}
                               </div>
